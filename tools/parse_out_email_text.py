@@ -37,7 +37,7 @@ def parseOutText(f):
         tokens = text_string.split()
         from nltk.stem.snowball import SnowballStemmer
         stemmer = SnowballStemmer("english")
-
+        words = ""
         from nltk.corpus import stopwords
         sw = stopwords.words("english")
         stemmed_tokens = []
@@ -50,7 +50,6 @@ def parseOutText(f):
 
     return " ".join(stemmed_tokens)
 
-    
 
 def main():
     ff = open("../text_learning/test_email.txt", "r")

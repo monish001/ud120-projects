@@ -56,6 +56,13 @@ for name, from_person in [("sara", from_sara), ("chris", from_chris)]:
             text = text.replace("shackleton", "")
             text = text.replace("chris", "")
             text = text.replace("germani", "")
+
+            # this line from a later lesson 11 (feature selection) for
+            #  the purpose of removing outlier in context of feature selection
+            text = text.replace("sshacklensf", "")
+            text = text.replace("cgermannsf", "")
+
+
             text = re.sub(' +', ' ', text)
 
             ### append the text to word_data
