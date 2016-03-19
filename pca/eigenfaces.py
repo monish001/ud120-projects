@@ -66,7 +66,13 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random
 ###############################################################################
 # Compute a PCA (eigenfaces) on the face dataset (treated as unlabeled
 # dataset): unsupervised feature extraction / dimensionality reduction
-n_components = 150
+#n_components = 10 # f1 score for Ariel Sharon = 0.21
+#n_components = 15 # f1 score for Ariel Sharon = 0.32
+#n_components = 25 # f1 score for Ariel Sharon = 0.64
+#n_components = 50 # f1 score for Ariel Sharon = 0.71
+#n_components = 100 # f1 score for Ariel Sharon = 0.77
+n_components = 150 # f1 score for Ariel Sharon = 0.64
+#n_components = 250 # f1 score for Ariel Sharon = 0.55
 
 print "Extracting the top %d eigenfaces from %d faces" % (n_components, X_train.shape[0])
 t0 = time()
@@ -74,6 +80,9 @@ pca = RandomizedPCA(n_components=n_components, whiten=True).fit(X_train)
 print "done in %0.3fs" % (time() - t0)
 
 eigenfaces = pca.components_.reshape((n_components, h, w))
+
+print "Eigen values showing relative significance of PCs:"
+print pca.explained_variance_ratio_
 
 print "Projecting the input data on the eigenfaces orthonormal basis"
 t0 = time()
